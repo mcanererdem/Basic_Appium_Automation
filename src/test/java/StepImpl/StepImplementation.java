@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.io.IOException;
 
-public class StepImplementation {
+public class StepImplementation  {
     static {
         try {
             DriverSetup.setupDriver();
@@ -16,7 +16,8 @@ public class StepImplementation {
         }
     }
 
-    private LoginPage loginPage;
+    private LoginPage loginPage = new LoginPage();
+
 
     public LoginPage pageObject() throws IOException {
         System.out.println("Driver null mu? " + (DriverSetup.androidDriver == null));
@@ -28,7 +29,7 @@ public class StepImplementation {
     }
 
     @Step("Sign in with email and password")
-    public void signInWithEmailPassword() {
-        loginPage.signInWithEmailAndPassword();
+    public void signInWithEmailPassword() throws IOException {
+        pageObject().signInWithEmailAndPassword();
     }
 }
